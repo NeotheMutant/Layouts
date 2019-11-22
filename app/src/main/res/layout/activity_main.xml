@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:id="@+id/etResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/type_something"
+        android:inputType="text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="spread"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@id/etResult"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="spread"
+        />
+
+    <Button
+        android:id="@+id/btnOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnTwo"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread"
+       />
+
+    <Button
+        android:id="@+id/btnTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnThree"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@id/btnOne"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@id/btnTwo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnFour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_4"
+        app:layout_constraintEnd_toStartOf="@id/btnFive"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnOne"
+        />
+
+    <Button
+        android:id="@+id/btnFive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_5"
+        app:layout_constraintEnd_toStartOf="@id/btnSix"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@id/btnFour"
+        app:layout_constraintTop_toBottomOf="@id/btnTwo"
+        />
+
+    <Button
+        android:id="@+id/btnSix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@id/btnTwo"
+        app:layout_constraintTop_toBottomOf="@id/btnThree"
+        />
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
