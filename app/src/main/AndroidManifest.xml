@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MotionActivity" />
+        <activity android:name=".ImageFilterActivity" />
     </application>
 
 </manifest>
