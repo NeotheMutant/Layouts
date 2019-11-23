@@ -19,6 +19,12 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        btnTwo.setOnClickListener {
+            val intent = Intent(this,ImageFilterActivity::class.java)
+            startActivity(intent)
+
+        }
+
 
     }
 }
