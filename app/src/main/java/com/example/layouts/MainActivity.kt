@@ -26,5 +26,19 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
+        btnFour.setOnClickListener {
+            val intent = Intent(this,RecyclerActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        btnFive.setOnClickListener {
+            val intent = Intent(this,ContactListActivity::class.java)
+            startActivity(intent)
+
+        }
+
+
     }
 }
