@@ -1,5 +1,6 @@
 package com.example.layouts
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,20 +16,46 @@ class ContactListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.acivity_recycler)
-        val contactList = ArrayList<ContactInfo>()
-        contactList.add(ContactInfo("Gaurav", "787845548"))
-        contactList.add(ContactInfo("Arjun", "787845548"))
-        contactList.add(ContactInfo("Ram", "787845548"))
-        contactList.add(ContactInfo("Laxman", "787845548"))
-        contactList.add(ContactInfo("Ravvan", "787845548"))
-        contactList.add(ContactInfo("Hanuman", "787845548"))
-        contactList.add(ContactInfo("Tulsi", "787845548"))
-        contactList.add(ContactInfo("Nakul", "787845548"))
+        val contactList = arrayListOf(
+              ContactInfo("Gaurav", "787845548")
+            , ContactInfo("Arjun", "787845548")
+            , ContactInfo("Ram", "787845548")
+            , ContactInfo("Laxman", "787845548")
+            , ContactInfo("Ravvan", "787845548")
+            , ContactInfo("Hanuman", "787845548")
+            , ContactInfo("Tulsi", "787845548")
+            , ContactInfo("Nakul", "787845548")
+            , ContactInfo("Gaurav", "787845548")
+            , ContactInfo("Arjun", "787845548")
+            , ContactInfo("Ram", "787845548")
+            , ContactInfo("Laxman", "787845548")
+            , ContactInfo("Ravvan", "787845548")
+            , ContactInfo("Hanuman", "787845548")
+            , ContactInfo("Tulsi", "787845548")
+            , ContactInfo("Nakul", "787845548")
+            , ContactInfo("Gaurav", "787845548")
+            , ContactInfo("Arjun", "787845548")
+            , ContactInfo("Ram", "787845548")
+            , ContactInfo("Laxman", "787845548")
+            , ContactInfo("Ravvan", "787845548")
+            , ContactInfo("Hanuman", "787845548")
+            , ContactInfo("Tulsi", "787845548")
+            , ContactInfo("Nakul", "787845548")
+            , ContactInfo("Gaurav", "787845548")
+            , ContactInfo("Arjun", "787845548")
+            , ContactInfo("Ram", "787845548")
+            , ContactInfo("Laxman", "787845548")
+            , ContactInfo("Ravvan", "787845548")
+            , ContactInfo("Hanuman", "787845548")
+            , ContactInfo("Tulsi", "787845548")
+            , ContactInfo("Nakul", "787845548")
+        )
 
 
 
         viewManager = LinearLayoutManager(this)
-        viewAdapter = ContactAdapter(contactList) { contact:ContactInfo -> contactClicked(contact)}
+        viewAdapter =
+            ContactAdapter(contactList) { contact: ContactInfo -> contactClicked(contact) }
 
         MyRecycler.apply {
 
@@ -40,14 +67,18 @@ class ContactListActivity : AppCompatActivity() {
 
     }
 
-    fun contactClicked(contact:ContactInfo){
+    fun contactClicked(contact: ContactInfo) {
 
-        Toast.makeText(this,"${contact.name} clicked",Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, ContactDetailActivity::class.java).apply {
+
+            putExtra("NAME", contact.name)
+            putExtra("NUMBER", contact.PhoneNumber)
+        }
+
+        startActivity(intent)
+
 
     }
-
-
-
 
 
 }
