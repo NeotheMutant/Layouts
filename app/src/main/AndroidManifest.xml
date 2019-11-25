@@ -19,7 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MotionActivity" />
+        <activity android:name=".RecyclerActivity" />
         <activity android:name=".ImageFilterActivity" />
+        <activity android:name=".ContactListActivity" />
+        <activity android:name=".ContactDetailActivity" />
     </application>
 
 </manifest>
