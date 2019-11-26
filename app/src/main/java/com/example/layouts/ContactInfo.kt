@@ -1,3 +1,3 @@
 package com.example.layouts
 
-class ContactInfo (var name:String,var PhoneNumber:String)
+data class ContactInfo (var name:String,var phoneNumber:String,var hasImage:Int=0,var ImgId:Int =0)

@@ -22,7 +22,24 @@
         <activity android:name=".RecyclerActivity" />
         <activity android:name=".ImageFilterActivity" />
         <activity android:name=".ContactListActivity" />
+
+
         <activity android:name=".ContactDetailActivity" />
+        <activity
+            android:name=".ScResultActivity"
+            android:launchMode="singleTop">
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>
