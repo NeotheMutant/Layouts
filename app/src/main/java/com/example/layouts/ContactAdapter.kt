@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.contact_view.view.*
 import kotlinx.android.synthetic.main.contact_view.view.tvName
 import kotlinx.android.synthetic.main.contact_view_img.view.*
 
-class ContactAdapter(private val contactList: ArrayList<ContactInfo>) :
+class ContactAdapter(private val contactList: List<ContactInfo>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val HAS_IMAGE = 1
 
@@ -84,7 +84,7 @@ class ContactAdapter(private val contactList: ArrayList<ContactInfo>) :
 
             with(itemView) {
                 tvName.text = contactInfo.name
-                imContactImage.setImageResource(contactInfo.ImgId)
+                contactInfo.ImgId?.let { imContactImage.setImageResource(it) }
                 imContactImage.background?.setTint(randomColor())
 
                 itemView.setOnClickListener {

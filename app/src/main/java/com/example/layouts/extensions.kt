@@ -34,3 +34,15 @@ fun View.randomColor(): Int {
 
     return Color.BLACK
 }
+
+
+fun Int.giveStatus():String{
+    if (this == 0)
+        return "OTHERS"
+    if (this == 1)
+        return "TRAINEE"
+    if (this == 2)
+        return "MENTORS"
+
+    return "OTHERS"
+  }

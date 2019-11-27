@@ -10,11 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:fastScrollEnabled="true"
+        android:scrollbarStyle="insideOverlay"
         app:fastScrollHorizontalThumbDrawable="@drawable/thumb_drawable"
         app:fastScrollVerticalThumbDrawable="@drawable/thumb_drawable"
         app:fastScrollHorizontalTrackDrawable="@drawable/line_drawable"
         app:fastScrollVerticalTrackDrawable="@drawable/line_drawable"
         />
+
+
 
 
 </LinearLayout>
