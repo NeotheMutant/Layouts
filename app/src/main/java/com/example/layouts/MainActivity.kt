@@ -3,39 +3,39 @@ package com.example.layouts
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.adapters.ActivityAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var viewManager: RecyclerView.LayoutManager
+    lateinit var viewAdapter: RecyclerView.Adapter<*>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        btnOne.setOnClickListener {
-            val intent = Intent(this,MotionActivity::class.java)
-            startActivity(intent)
+        val activitylist = arrayListOf<String>(
+            "Motion Layout",
+            "Image Filter Motion Layout",
+            "Recycler View "
 
-
-        }
-
-        btnTwo.setOnClickListener {
-            val intent = Intent(this,ImageFilterActivity::class.java)
-            startActivity(intent)
-
-        }
+        )
 
 
 
-        btnFour.setOnClickListener {
-            val intent = Intent(this,RecyclerActivity::class.java)
-            startActivity(intent)
-        }
+
+        viewManager = LinearLayoutManager(this)
+        viewAdapter = ActivityAdapter(activitylist)
 
 
-        btnFive.setOnClickListener {
-            val intent = Intent(this,ContactListActivity::class.java)
-            startActivity(intent)
+        mainRV.apply {
+
+            layoutManager = viewManager
+            adapter = viewAdapter
 
         }
 
