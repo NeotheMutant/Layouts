@@ -3,36 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-
-
+    android:orientation="vertical">
 
 
     <TextView
-        android:id="@+id/tvnameDetail"
+        android:id="@+id/tvParentRv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/name"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvNumber"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChild"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/number"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvParentRv"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvnameDetail" />
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

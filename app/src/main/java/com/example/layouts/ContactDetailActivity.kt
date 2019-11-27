@@ -10,8 +10,8 @@ class ContactDetailActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.contact_detail_list)
 
-        val name = intent.getStringExtra("NAME")
-        val phoneNumber = intent.getStringExtra("NUMBER")
+        val name = intent.getStringExtra(ContactAdapter.NAME)
+        val phoneNumber = intent.getStringExtra(ContactAdapter.NUMBER)
 
         tvnameDetail.text = name
         tvNumber.text = phoneNumber

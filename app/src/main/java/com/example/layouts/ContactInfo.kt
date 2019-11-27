@@ -1,3 +1,5 @@
 package com.example.layouts
 
-class ContactInfo (var name:String,var PhoneNumber:String)
+import androidx.annotation.DrawableRes
+
+data class ContactInfo (var name:String, var phoneNumber:String, var hasImage:Int=0, @DrawableRes var ImgId:Int? =null, var post : Int =0 )
