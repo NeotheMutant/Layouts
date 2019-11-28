@@ -2,7 +2,6 @@ package com.example.layouts
 
 import android.app.SearchManager
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -11,7 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.adapters.ParentContactAdapter
+import com.example.models.ContactInfo
 import kotlinx.android.synthetic.main.acivity_recycler.*
 import kotlinx.android.synthetic.main.activity_nestedrv.*
 
@@ -27,14 +27,21 @@ class ContactListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nestedrv)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val contactList = arrayListOf(
-            ContactInfo("Gaurav", "4454545455", HAS_IMAGE, R.drawable.ic_perm_identity_black_24dp,status.TRAINEE),
-            ContactInfo("Nakul", "987745458",post = MENTORS),
-            ContactInfo("Arjun", "987745458",post = OTHERS),
-            ContactInfo("Sahdev", "987745458",post= OTHERS),
-            ContactInfo("Arjun", "987745458",post = OTHERS),
-             ContactInfo("Sahdev", "987745458",post= OTHERS)
+            ContactInfo(
+                "Gaurav",
+                "4454545455",
+                HAS_IMAGE,
+                R.drawable.ic_perm_identity_black_24dp,
+                TRAINEE
+            ),
+            ContactInfo("Nakul", "987745458", post = MENTORS),
+            ContactInfo("Arjun", "987745458", post = OTHERS),
+            ContactInfo("Sahdev", "987745458", post = OTHERS),
+            ContactInfo("Arjun", "987745458", post = OTHERS),
+            ContactInfo("Sahdev", "987745458", post = OTHERS)
 
         )
 
@@ -57,16 +64,27 @@ class ContactListActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
 
-       /* val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+       val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
 
-        (menu.findItem(R.id.search).actionView as SearchView).apply {
+        (menu.findItem(R.id.search).actionView as SearchView ).apply {
             setSearchableInfo(searchManager.getSearchableInfo(componentName))
         }
-       */
+
 
 
 
         return true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+
+
+
+
+
+        return super.onOptionsItemSelected(item)
     }
 
 

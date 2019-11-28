@@ -1,11 +1,15 @@
-package com.example.layouts
+package com.example.adapters
 
 import android.content.Intent
-import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_imagefilter.view.*
+import com.example.layouts.ContactDetailActivity
+import com.example.layouts.R
+import com.example.models.ContactInfo
+import com.example.utilis.infalter
+import com.example.utilis.inflaterr
+import com.example.utilis.randomColor
 import kotlinx.android.synthetic.main.contact_view.view.*
 import kotlinx.android.synthetic.main.contact_view.view.tvName
 import kotlinx.android.synthetic.main.contact_view_img.view.*

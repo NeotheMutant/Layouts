@@ -1,4 +1,4 @@
-package com.example.layouts
+package com.example.utilis
 
 import android.content.Context
 import android.graphics.Color

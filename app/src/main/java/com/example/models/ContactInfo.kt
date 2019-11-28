@@ -1,4 +1,4 @@
-package com.example.layouts
+package com.example.models
 
 import androidx.annotation.DrawableRes
 

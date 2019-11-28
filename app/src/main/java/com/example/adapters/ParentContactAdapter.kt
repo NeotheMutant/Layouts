@@ -1,9 +1,13 @@
-package com.example.layouts
+package com.example.adapters
 
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.layouts.R
+import com.example.models.ContactInfo
+import com.example.utilis.giveStatus
+import com.example.utilis.infalter
 import kotlinx.android.synthetic.main.activity_parent_rv.view.*
 
 class ParentContactAdapter(private val contactList: ArrayList<ContactInfo>) :

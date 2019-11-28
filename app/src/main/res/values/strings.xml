@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Layouts</string>
+    <string name="app_name"> Android Training App</string>
     <string name="button">Button</string>
     <string name="type_something">Type Something</string>
     <string name="button1">Button1</string>
@@ -19,4 +19,6 @@
     <string name="number">number</string>
     <string name="home">Home</string>
     <string name="search">Search</string>
+    <string name="press">Press</string>
+    <string name="Long_Text">This is a Longer Text</string>
 </resources>

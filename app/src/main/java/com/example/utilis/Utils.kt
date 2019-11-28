@@ -1,11 +1,11 @@
-package com.example.models
+package com.example.utilis
 
 import android.content.Context
 import android.content.Intent
+import com.example.layouts.AnimationsActivity
 import com.example.layouts.ContactListActivity
 import com.example.layouts.ImageFilterActivity
 import com.example.layouts.MotionActivity
-import java.text.FieldPosition
 
 class Utils {
 
@@ -22,6 +22,8 @@ class Utils {
                 1->  intent  = Intent(context,ImageFilterActivity::class.java)
 
                 2-> intent  = Intent(context,ContactListActivity::class.java)
+
+                3-> intent = Intent(context,AnimationsActivity::class.java)
 
 
 

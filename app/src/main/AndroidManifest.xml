@@ -19,9 +19,19 @@
             </intent-filter>
         </activity>
         <activity android:name=".MotionActivity" />
-        <activity android:name=".RecyclerActivity" />
+
         <activity android:name=".ImageFilterActivity" />
-        <activity android:name=".ContactListActivity" />
+        <activity
+            android:name=".ContactListActivity"
+            android:parentActivityName=".MainActivity" >
+
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+
+        </activity>
 
 
         <activity android:name=".ContactDetailActivity" />
@@ -29,18 +39,14 @@
             android:name=".ScResultActivity"
             android:launchMode="singleTop">
 
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
-
-
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
 
             </intent-filter>
 
         </activity>
-        <activity android:name="com.example.nestedRv.NestedRv" />
+        <activity android:name=".AnimationsActivity" />
+
     </application>
 
 </manifest>
