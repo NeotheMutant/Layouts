@@ -7,10 +7,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.layouts.R
-import com.example.utilis.ItemTouchHelperCallBack
-import com.example.utilis.infalter
-import com.example.utilis.randomColor
-import com.example.utilis.Utils
+import com.example.utilis.*
 import kotlinx.android.synthetic.main.contact_view.view.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -31,7 +28,7 @@ class ActivityAdapter(private val activityList: ArrayList<String>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        return ViewHolder(parent.infalter(R.layout.contact_view))
+        return ViewHolder(parent.context.inflate(R.layout.contact_view))
     }
 
     override fun getItemCount() = activityList.size

@@ -2,20 +2,16 @@ package com.example.utilis
 
 import android.content.Context
 import android.graphics.Color
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-fun ViewGroup.infalter(layoutRes: Int): View {
-
-    return View.inflate(context, layoutRes, null)
-}
+import android.view.ViewParent
 
 
-fun Context.inflaterr(layoutRes: Int): View {
 
 
+fun Context.inflate(layoutRes: Int): View {
     return View.inflate(this, layoutRes, null)
-
 }
 
 fun View.randomColor(): Int {
