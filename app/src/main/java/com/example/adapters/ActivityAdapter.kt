@@ -1,6 +1,7 @@
 package com.example.adapters
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -17,9 +18,14 @@ class ActivityAdapter(private val activityList: ArrayList<String>) :
     ItemTouchHelperCallBack.ItemTouchHelperAdapter {
 
 
-    override fun onItemMoved(fromPosition: Int, toPosition: Int) = swapItems(fromPosition, toPosition)
 
-    override fun onItemDismiss(position: Int, direction: Int, viewHolder: RecyclerView.ViewHolder) = swipeItem(position, direction, viewHolder)
+
+
+    override fun onItemMoved(fromPosition: Int, toPosition: Int) =
+        swapItems(fromPosition, toPosition)
+
+    override fun onItemDismiss(position: Int, direction: Int, viewHolder: RecyclerView.ViewHolder) =
+        swipeItem(position, direction, viewHolder)
 
     lateinit var context: Context
 
@@ -28,7 +34,13 @@ class ActivityAdapter(private val activityList: ArrayList<String>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        return ViewHolder(parent.context.inflate(R.layout.contact_view))
+        return ViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.contact_view,
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount() = activityList.size
@@ -67,10 +79,7 @@ class ActivityAdapter(private val activityList: ArrayList<String>) :
 
         if (direction == ItemTouchHelper.START) {
             context = viewHolder.itemView.context
-
-
             Utils.HandleClick(context, position)
-
             notifyItemChanged(position)
 
         }

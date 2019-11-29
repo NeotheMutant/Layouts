@@ -11,7 +11,7 @@ import android.view.ViewParent
 
 
 fun Context.inflate(layoutRes: Int): View {
-    return View.inflate(this, layoutRes, null)
+    return View.inflate(this, layoutRes,null)
 }
 
 fun View.randomColor(): Int {
@@ -29,6 +29,13 @@ fun View.randomColor(): Int {
     }
 
     return Color.BLACK
+}
+
+
+fun View.getColor():Int{
+
+
+    return Color.RED
 }
 
 

@@ -1,5 +1,6 @@
 package com.example.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +37,7 @@ class ParentContactAdapter(private val contactList: MutableMap<Int,ArrayList<Con
 
 
 
-        return ViewHolder(parent.context.inflate(R.layout.activity_parent_rv))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.activity_parent_rv, parent, false))
 
     }
 
@@ -63,7 +64,14 @@ class ParentContactAdapter(private val contactList: MutableMap<Int,ArrayList<Con
 
 
 
-    override fun getItemCount() = contactList.count()
+    override fun getItemCount() :Int {
 
+
+        Log.d("sfdfdfdfdf","${contactList.count()}")
+
+        return contactList.count()
+
+
+    }
 
 }

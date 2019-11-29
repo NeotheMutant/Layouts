@@ -1,6 +1,7 @@
 package com.example.adapters
 
 import android.content.Intent
+import android.view.LayoutInflater
 
 import android.view.View
 import android.view.ViewGroup
@@ -21,8 +22,7 @@ class ContactAdapter(private val contactList: ArrayList<ContactInfo>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
 
-       return ViewHolder(parent.context.inflate(R.layout.contact_view))
-
+       return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.contact_view, parent, false))
     }
 
     override fun getItemCount() = contactList.size
