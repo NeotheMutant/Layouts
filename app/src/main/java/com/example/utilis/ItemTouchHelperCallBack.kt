@@ -13,7 +13,6 @@ import com.example.layouts.R
 class ItemTouchHelperCallBack(val adapter: ItemTouchHelperAdapter) : ItemTouchHelper.Callback() {
 
     var background = ColorDrawable(Color.DKGRAY)
-    val iconDrawable = getDrawable(adapter, R.drawable.ic_send_white_24dp)
 
 
     override fun getMovementFlags(
@@ -58,12 +57,14 @@ class ItemTouchHelperCallBack(val adapter: ItemTouchHelperAdapter) : ItemTouchHe
 
         val itemView = viewHolder.itemView
 
+        val iconHeight = (iconDrawable?.intrinsicHeight ?: 0)
+        val iconWidth = (iconDrawable?.intrinsicWidth ?: 0)
 
-        val iconMargin = (itemView.height - iconDrawable!!.intrinsicHeight) / 2
+        val iconMargin = (itemView.height - iconHeight) / 2
 
 
-        val iconTop = itemView.top + (itemView.height - iconDrawable.intrinsicHeight) / 2
-        val iconBottom = itemView.top + iconDrawable.intrinsicHeight
+        val iconTop = itemView.top + (itemView.height - iconHeight) / 2
+        val iconBottom = itemView.top + iconHeight
 
         val backgroundCornerOffset = 20
 
@@ -74,13 +75,14 @@ class ItemTouchHelperCallBack(val adapter: ItemTouchHelperAdapter) : ItemTouchHe
                 // iconDrawable = getDrawable(viewHolder.itemView.context,R.drawable.ic_send_white_24dp)
 
                 val iconLeft = itemView.left + iconMargin
-                val iconRight = itemView.left + iconDrawable.intrinsicWidth
-                iconDrawable.setBounds(iconLeft, iconTop, iconRight, iconBottom)
+                val iconRight = itemView.left + iconWidth
+
+
+                iconDrawable!!.setBounds(iconLeft, iconTop, iconRight, iconBottom)
 
                 background.setBounds(
                     itemView.left, itemView.top,
-                    itemView.left + dX.toInt() + backgroundCornerOffset,
-                    itemView.bottom
+                    itemView.left + dX.toInt() + backgroundCornerOffset, itemView.bottom
                 )
 
             }
@@ -89,9 +91,12 @@ class ItemTouchHelperCallBack(val adapter: ItemTouchHelperAdapter) : ItemTouchHe
                 //iconDrawable = getDrawable(viewHolder.itemView.context,R.drawable.ic_delete_white_24dp)
                 background = ColorDrawable(Color.parseColor("#801336"))
 
-                val iconLeft = itemView.left - iconMargin - iconDrawable.intrinsicWidth
-                val iconRight = itemView.left  - iconMargin
-                iconDrawable.setBounds(iconLeft, iconTop, iconRight, iconBottom)
+
+                val iconLeft = itemView.left + iconMargin - iconWidth
+                val iconRight = itemView.left - iconMargin
+
+
+                iconDrawable!!.setBounds(iconLeft, iconTop, iconRight, iconBottom)
 
 
 
@@ -100,8 +105,12 @@ class ItemTouchHelperCallBack(val adapter: ItemTouchHelperAdapter) : ItemTouchHe
                     itemView.top, itemView.right, itemView.bottom
                 )
             }
-            else -> // view is unSwiped
+            else -> // view is unSwiped1
+            {
                 background.setBounds(0, 0, 0, 0)
+                iconDrawable!!.setBounds(0, 0, 0, 0)
+            }
+
         }
         background.draw(c)
         iconDrawable.draw(c)
@@ -117,7 +126,6 @@ class ItemTouchHelperCallBack(val adapter: ItemTouchHelperAdapter) : ItemTouchHe
         fun onItemMoved(fromPosition: Int, toPosition: Int)
 
         fun onItemDismiss(position: Int, direction: Int, viewHolder: RecyclerView.ViewHolder)
-
 
 
     }

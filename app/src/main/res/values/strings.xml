@@ -13,7 +13,6 @@
     <string name="name">Name</string>
     <string name="age">Age</string>
     <string name="post">Post</string>
-    <string name="a">A</string>
     <string name="gaurav_kumar_kashodhan">Gaurav kumar kashodhan</string>
     <string name="gaurav_kumar">Gaurav_kumar</string>
     <string name="number">number</string>
@@ -21,4 +20,12 @@
     <string name="search">Search</string>
     <string name="press">Press</string>
     <string name="Long_Text">This is a Longer Text</string>
+    <string name="Message">Qoutes From Renowned Authors</string>
+    <string name="a">A</string>
+    <string name="highscore">HighScore :</string>
+    <string name="sharedPrefKey">com.example.layout.PREF_KEY</string>
+    <string name="sec">sec</string>
+    <string name="time">Time</string>
+    <string name="_0">0</string>
+    <string name="try_again">Try again</string>
 </resources>

@@ -5,7 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,9 +27,21 @@ class ContactListActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val traineeList = arrayListOf(
-            ContactInfo("Gaurav", "4454545455", HAS_IMAGE, R.drawable.ic_perm_identity_black_24dp, TRAINEE),
-            ContactInfo("Shyam", "4454545455", HAS_IMAGE, R.drawable.ic_perm_identity_black_24dp, TRAINEE),
-                    ContactInfo("Shiva", "4454545455", NO_IMAGE,null, TRAINEE)
+            ContactInfo(
+                "Gaurav",
+                "4454545455",
+                HAS_IMAGE,
+                R.drawable.ic_perm_identity_black_24dp,
+                TRAINEE
+            ),
+            ContactInfo(
+                "Shyam",
+                "4454545455",
+                HAS_IMAGE,
+                R.drawable.ic_perm_identity_black_24dp,
+                TRAINEE
+            ),
+            ContactInfo("Shiva", "4454545455", NO_IMAGE, null, TRAINEE)
         )
 
         val mentorList = arrayListOf(
@@ -45,11 +57,22 @@ class ContactListActivity : AppCompatActivity() {
         )
 
 
-
-
         val othersList = arrayListOf(
-            ContactInfo("Ram", "4454545455", HAS_IMAGE, R.drawable.ic_perm_identity_black_24dp, OTHERS),
-            ContactInfo("Ram", "4454545455", HAS_IMAGE, R.drawable.ic_perm_identity_black_24dp, OTHERS))
+            ContactInfo(
+                "Ram",
+                "4454545455",
+                HAS_IMAGE,
+                R.drawable.ic_perm_identity_black_24dp,
+                OTHERS
+            ),
+            ContactInfo(
+                "Ram",
+                "4454545455",
+                HAS_IMAGE,
+                R.drawable.ic_perm_identity_black_24dp,
+                OTHERS
+            )
+        )
 
 
         val contactList = mutableMapOf(
@@ -58,6 +81,8 @@ class ContactListActivity : AppCompatActivity() {
             OTHERS to othersList
 
         )
+
+
 
 
 
@@ -76,20 +101,7 @@ class ContactListActivity : AppCompatActivity() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
 
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-
-        (menu.findItem(R.id.search).actionView as SearchView).apply {
-            setSearchableInfo(searchManager.getSearchableInfo(componentName))
-        }
-
-
-
-
-        return true
-    }
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

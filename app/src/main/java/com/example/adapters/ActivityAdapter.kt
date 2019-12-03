@@ -1,10 +1,12 @@
 package com.example.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.layouts.R
@@ -13,13 +15,15 @@ import kotlinx.android.synthetic.main.contact_view.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
+
 class ActivityAdapter(private val activityList: ArrayList<String>) :
     RecyclerView.Adapter<ActivityAdapter.ViewHolder>(),
-    ItemTouchHelperCallBack.ItemTouchHelperAdapter {
+    ItemTouchHelperCallBack.ItemTouchHelperAdapter, Filterable {
+
+    lateinit var filteredList: ArrayList<String>
 
 
-
-
+    override fun getFilter() = SearchFilter()
 
     override fun onItemMoved(fromPosition: Int, toPosition: Int) =
         swapItems(fromPosition, toPosition)
@@ -88,4 +92,66 @@ class ActivityAdapter(private val activityList: ArrayList<String>) :
     }
 
 
+    inner class SearchFilter : Filter() {
+
+
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+
+            val filterResults = FilterResults()
+            filteredList = ArrayList<String>()
+
+
+
+
+            constraint?.let {
+
+                if (it.isNotEmpty()) {
+
+                    for (s in activityList) {
+
+                        if (s.startsWith(it.toString())) {
+                            filteredList.add(s)
+                        }
+                    }
+
+                    filterResults.count = filteredList.size
+                    filterResults.values = filteredList
+
+
+                } else {
+                    filterResults.count = activityList.size
+                    filterResults.values = activityList
+                }
+
+            }
+
+            return filterResults
+
+        }
+
+        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+
+
+
+
+            if (!constraint.isNullOrBlank()) {
+                activityList.clear()
+                activityList.addAll(results?.values as ArrayList<String>)
+
+            }
+
+            notifyDataSetChanged()
+
+        }
+
+
+    }
+
+
+
+
 }
+
+
+
+

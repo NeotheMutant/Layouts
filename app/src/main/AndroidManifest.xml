@@ -35,19 +35,22 @@
 
 
         <activity android:name=".ContactDetailActivity"
-            android:theme="@style/ActivityTheme"
+            android:theme="@style/Theme.AppCompat.Dialog"
             />
         <activity
-            android:name=".ScResultActivity"
-            android:launchMode="singleTop">
-
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-
-            </intent-filter>
+            android:name=".ScResultActivity">
 
         </activity>
         <activity android:name=".AnimationsActivity" />
+        <activity android:name=".FragmentsActivity" />
+        <activity android:name=".DetailsActivity" />
+        <activity android:name=".FormFragment" />
+        <activity android:name=".SharedPrefActivity"
+                  android:launchMode="singleTop"
+            />
+        <activity android:name=".NewGameActivity"
+                 android:theme="@style/DialogTheme"
+            />
 
     </application>
 
