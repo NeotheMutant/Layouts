@@ -25,19 +25,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-         activitylist = arrayListOf<String>(
+        activitylist = arrayListOf(
             "Motion Layout",
             "Image Filter Motion Layout",
             "Recycler View ",
             "Animations | Activity Lifecycle",
             "Fragments",
-             "Saving :- Key Value Pairs"
+            "Saving :- Key Value Pairs",
+            "Saving :-Files | LifeCycle Aware concept",
+            "ViewModel"
         )
-
-
-
-
-
 
         viewAdapter = ActivityAdapter(activitylist)
 
@@ -66,9 +63,6 @@ class MainActivity : AppCompatActivity() {
                 override fun onQueryTextSubmit(query: String?): Boolean {
 
 
-
-
-
                     return false
                 }
 
@@ -94,24 +88,6 @@ class MainActivity : AppCompatActivity() {
 
         return true
     }
-
-    /*override fun onBackPressed() {
-        super.onBackPressed()
-
-        viewAdapter = ActivityAdapter(activitylist)
-
-        mainRV.apply {
-
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = viewAdapter
-
-
-        }
-        viewAdapter?.let { ItemTouchHelper(ItemTouchHelperCallBack(it)).attachToRecyclerView(mainRV) }
-
-
-
-    }*/
 
 
 }

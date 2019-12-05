@@ -1,7 +1,6 @@
 package com.example.adapters
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,13 +14,12 @@ import kotlinx.android.synthetic.main.contact_view.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-
-class ActivityAdapter(private val activityList: ArrayList<String>) :
+class ActivityAdapter(private var activityList: ArrayList<String>) :
     RecyclerView.Adapter<ActivityAdapter.ViewHolder>(),
     ItemTouchHelperCallBack.ItemTouchHelperAdapter, Filterable {
 
-    lateinit var filteredList: ArrayList<String>
-
+    var activityFilteredList: ArrayList<String> = activityList
+    lateinit var context: Context
 
     override fun getFilter() = SearchFilter()
 
@@ -30,9 +28,6 @@ class ActivityAdapter(private val activityList: ArrayList<String>) :
 
     override fun onItemDismiss(position: Int, direction: Int, viewHolder: RecyclerView.ViewHolder) =
         swipeItem(position, direction, viewHolder)
-
-    lateinit var context: Context
-
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
@@ -47,13 +42,12 @@ class ActivityAdapter(private val activityList: ArrayList<String>) :
         )
     }
 
-    override fun getItemCount() = activityList.size
-
+    override fun getItemCount() = activityFilteredList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.itemView.tvName.text = activityList[position]
-        holder.itemView.tvFirstWord.text = activityList[position].firstOrNull().toString()
+        holder.itemView.tvName.text = activityFilteredList[position]
+        holder.itemView.tvFirstWord.text = activityFilteredList[position].firstOrNull().toString()
         with(holder.itemView) {
             tvFirstWord.background.setTint(randomColor())
         }
@@ -68,7 +62,6 @@ class ActivityAdapter(private val activityList: ArrayList<String>) :
         }
     }
 
-
     private fun swapItems(fromPosition: Int, toPosition: Int) {
         Collections.swap(activityList, fromPosition, toPosition)
         notifyItemMoved(fromPosition, toPosition)
@@ -77,7 +70,7 @@ class ActivityAdapter(private val activityList: ArrayList<String>) :
     private fun swipeItem(position: Int, direction: Int, viewHolder: RecyclerView.ViewHolder) {
 
         if (direction == ItemTouchHelper.END) {
-            activityList.removeAt(position)
+            activityFilteredList.removeAt(position)
             notifyItemRemoved(position)
         }
 
@@ -88,42 +81,39 @@ class ActivityAdapter(private val activityList: ArrayList<String>) :
 
         }
 
-
     }
 
-
     inner class SearchFilter : Filter() {
-
 
         override fun performFiltering(constraint: CharSequence?): FilterResults {
 
             val filterResults = FilterResults()
-            filteredList = ArrayList<String>()
-
-
-
-
             constraint?.let {
 
-                if (it.isNotEmpty()) {
-
-                    for (s in activityList) {
-
-                        if (s.startsWith(it.toString())) {
-                            filteredList.add(s)
-                        }
-                    }
-
-                    filterResults.count = filteredList.size
-                    filterResults.values = filteredList
-
+                if (it.isEmpty()) {
+                    activityFilteredList = activityList
 
                 } else {
-                    filterResults.count = activityList.size
-                    filterResults.values = activityList
+
+                    var filteredList = ArrayList<String>()
+
+                    for (s in activityFilteredList) {
+
+                        if (s.toLowerCase().startsWith(it.toString().toLowerCase()))
+                            filteredList.add(s)
+                    }
+
+                    activityFilteredList = filteredList
+
                 }
 
             }
+
+            filterResults.apply {
+                count = activityFilteredList.size
+                values = activityFilteredList
+            }
+
 
             return filterResults
 
@@ -131,27 +121,10 @@ class ActivityAdapter(private val activityList: ArrayList<String>) :
 
         override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
 
-
-
-
-            if (!constraint.isNullOrBlank()) {
-                activityList.clear()
-                activityList.addAll(results?.values as ArrayList<String>)
-
-            }
-
             notifyDataSetChanged()
 
         }
 
-
     }
 
-
-
-
 }
-
-
-
-

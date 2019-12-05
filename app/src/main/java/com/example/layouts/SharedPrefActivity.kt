@@ -1,107 +1,90 @@
 package com.example.layouts
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.utilis.randomColor
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import com.example.models.TapViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_shared_pref.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-
 
 class SharedPrefActivity : AppCompatActivity() {
 
-    var highScore = 0
-    var curScore = 0
+    private var highScore = 0
     var sharedPref: SharedPreferences? = null
-    var i: Int = 0
+    private val changeObserveScore = Observer<Int> {
+        tvBlink.text = it.toString()
+    }
 
+    private val changeObserverTimer = Observer<Int> {
+        tvSec.text = it.toString()
 
-    override fun onCreate(savedInstanceState: Bundle?) = runBlocking {
+    }
+    private val changeObserverWords = Observer<String> {
+        tvSec.text = it
+    }
+
+    val model: TapViewModel by lazy {
+        ViewModelProviders.of(this)[TapViewModel::class.java]
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shared_pref)
+
+
+        model.blink()
+
 
         sharedPref = getSharedPreferences(getString(R.string.sharedPrefKey), Context.MODE_PRIVATE)
         tvHighScoreValue.text = sharedPref?.getString(getString(R.string.sharedPrefKey), "-1")
         highScore = tvHighScoreValue.text.toString().toInt()
-        val intent = intent
+        model.curScore.observe(this, changeObserveScore)
+        model.timer.observe(this, changeObserverTimer)
+        model.words.observe(this, changeObserverWords)
 
-
-
-        blinkTV()
 
 
         tvBlink.setOnClickListener {
 
-            if (i == 10) {
-                setHighScoreG(curScore)
+
+
+            if (model.nTimer == 0) {
+                return@setOnClickListener
+            }
+
+
+            if (model.nTimer == 10) {
+
+                setHighScoreG(model.getCurScore())
                 tvHighScoreValue.text =
                     sharedPref?.getString(getString(R.string.sharedPrefKey), "-1")
 
-                   Snackbar.make(it,"Game Over",Snackbar.LENGTH_INDEFINITE).setAction("Try Again"){
-                        finish()
+                Snackbar.make(it, "Game Over", Snackbar.LENGTH_INDEFINITE).setAction("Try Again") {
+                    model.reset()
+                    reset()
+                    model.blink()
 
-                       startActivity(intent)
-
-                   }.show()
+                }.show()
 
 
                 return@setOnClickListener
             }
-
-            increment()
-            tvBlink.text = curScore.toString()
+            model.increment()
 
         }
 
 
     }
 
-
-    suspend fun blinkTV() {
-
-        GlobalScope.launch {
-
-            i = 1
-
-            while (i != 10) {
-
-                delay(1000L)
-                runOnUiThread {
-
-                    tvSec.text = i.toString()
-
-                }
-                i++
-
-
-            }
-
-
-        }
-
-
+    private fun reset() {
+        tvBlink.text = "0"
+        tvSec.text = " "
     }
 
-    fun increment() {
-
-        curScore += 1
-
-    }
-
-    fun reset() {
-        curScore = 0
-    }
-
-    fun setHighScoreG(curScore: Int) {
-
+    private fun setHighScoreG(curScore: Int) {
 
         if (highScore >= curScore) {
             return
@@ -111,19 +94,12 @@ class SharedPrefActivity : AppCompatActivity() {
 
                 it?.putString(getString(R.string.sharedPrefKey), highScore.toString())
                 it?.apply()
-                Log.d("dsdsds", "sdsdsd")
             }
 
 
         }
 
     }
-
-    override fun onStop() {
-        super.onStop()
-        finish()
-    }
-
 
 
 }

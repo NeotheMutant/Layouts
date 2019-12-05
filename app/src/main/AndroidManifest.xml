@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.layouts">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true"
+        />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -37,20 +42,17 @@
         <activity android:name=".ContactDetailActivity"
             android:theme="@style/Theme.AppCompat.Dialog"
             />
-        <activity
-            android:name=".ScResultActivity">
 
-        </activity>
         <activity android:name=".AnimationsActivity" />
         <activity android:name=".FragmentsActivity" />
         <activity android:name=".DetailsActivity" />
         <activity android:name=".FormFragment" />
         <activity android:name=".SharedPrefActivity"
-                  android:launchMode="singleTop"
+                  android:screenOrientation="portrait"
             />
-        <activity android:name=".NewGameActivity"
-                 android:theme="@style/DialogTheme"
-            />
+
+        <activity android:name=".FilesActivity" />
+        <activity android:name=".TestViewModel" />
 
     </application>
 
