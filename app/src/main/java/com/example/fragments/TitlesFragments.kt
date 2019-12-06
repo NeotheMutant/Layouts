@@ -27,20 +27,17 @@ import kotlinx.android.synthetic.main.contact_view.*
 import kotlinx.android.synthetic.main.contact_view.view.*
 import kotlinx.android.synthetic.main.titles_activity.*
 
-
 class TitlesFragments : Fragment() {
 
     lateinit var viewManager: RecyclerView.LayoutManager
     lateinit var viewAdapter: RecyclerView.Adapter<*>
     var dualPane = false
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
 
         return inflater.inflate(R.layout.titles_activity, container, false)
 
@@ -49,8 +46,7 @@ class TitlesFragments : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        val list = arrayListOf<AuthorsAndQuotes>(
+        val list = arrayListOf(
             AuthorsAndQuotes("Gaurav", "Lorem ipsum dolor sit amet, consectetur adipiscing elit"),
             AuthorsAndQuotes(
                 "Vishak",
@@ -77,7 +73,6 @@ class TitlesFragments : Fragment() {
                     mycom.DisplayDetails(list[position].qoutes)
                 }
 
-
             }
         rvTitles.apply {
 
@@ -90,7 +85,6 @@ class TitlesFragments : Fragment() {
 
     }
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -102,10 +96,7 @@ class TitlesFragments : Fragment() {
 
     }
 
-
     inner class TitlesViewHolder(view: View) : RecyclerView.ViewHolder(view)
-
-
 
 
 }

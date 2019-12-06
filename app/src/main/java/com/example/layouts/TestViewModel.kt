@@ -3,9 +3,8 @@ package com.example.layouts
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import com.example.utilis.MyViewModel
+import com.example.models.MyViewModel
 import kotlinx.android.synthetic.main.activity_test_viewmodel.*
 
 class TestViewModel : AppCompatActivity() {

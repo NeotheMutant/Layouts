@@ -37,9 +37,7 @@ class FragmentsActivity : AppCompatActivity(), Connector {
             supportFragmentManager.beginTransaction().replace(R.id.flDetails, detailFragment).commit()
             Log.d("Fragments Activity", "Sucess")
 
-
         }
-
 
     }
 
