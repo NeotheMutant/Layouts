@@ -1,19 +1,16 @@
 package com.example.layouts
 
 import android.animation.LayoutTransition
-import android.os.Build
 import android.os.Bundle
-import android.transition.Transition
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.animation_activity.*
+import kotlinx.android.synthetic.main.activity_animation.*
 
 class AnimationsActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.animation_activity)
+        setContentView(R.layout.activity_animation)
 
         clAnimation.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
 

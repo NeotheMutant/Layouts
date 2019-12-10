@@ -27,7 +27,13 @@ class Utils {
 
                 6 -> intent = Intent(context, FilesActivity::class.java)
 
-                7 -> intent = Intent(context,TestViewModel::class.java)
+                7 -> intent = Intent(context, TestViewModel::class.java)
+
+                8 -> intent = Intent(context, FormActivity::class.java)
+
+                9 -> intent = Intent(context, UserInfoActivity::class.java)
+
+                10 -> intent = Intent(context, PlayListActivity::class.java)
 
             }
 

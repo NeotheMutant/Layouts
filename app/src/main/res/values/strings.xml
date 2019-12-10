@@ -32,4 +32,14 @@
     <string name="GameOver">Game Over</string>
     <string name="tap">Tap</string>
     <string name="click">click</string>
+    <string name="settings">Settings</string>
+    <string name="feedback">FeedBack</string>
+    <string name="Email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm PassWord</string>
+    <string name="songname">SongName</string>
+    <string name="link">Link</string>
+    <string name="add">ADD</string>
+    <string name="Update">Update</string>
+    <string name="Delete">Delete</string>
 </resources>

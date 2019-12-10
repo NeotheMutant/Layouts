@@ -1,22 +1,21 @@
 package com.example.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.layouts.R
-import com.example.utilis.inflate
-import java.util.zip.Inflater
+import com.example.entities.Song
+import com.example.utilis.DataChange
 
 class GenAdapter<T, V : RecyclerView.ViewHolder>(
-    var list: List<T>,
+    var list: ArrayList<T>,
     private var vh: (View) -> V,
     private var layoutRes: Int,
-    private var vhBinder: (Int, V) -> Unit
-) : RecyclerView.Adapter<V>() {
+    private var vhBinder: (Int, V) -> Unit) : RecyclerView.Adapter<V>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): V {
-
 
         return vh(LayoutInflater.from(parent.context).inflate(layoutRes, parent, false))
     }
@@ -28,6 +27,21 @@ class GenAdapter<T, V : RecyclerView.ViewHolder>(
         vhBinder(position, holder)
 
     }
+
+    fun dataUpdate(position: Int,data:T) {
+        list[position] = data
+        notifyItemChanged(position)
+    }
+    fun dataDelete(position: Int){
+        list.removeAt(position)
+        notifyItemRemoved(position)
+    }
+    fun dataInsert(data: T){
+        list.add(data)
+        Log.d("GenAdapter","${list.size}")
+        notifyItemInserted(list.lastIndex)
+    }
+
 
 
 }

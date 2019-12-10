@@ -15,10 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.example.utilis.LifecycleListener
 import kotlinx.android.synthetic.main.activity_files.*
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
+import java.io.*
 import java.lang.StringBuilder
 import java.net.URI
 import java.util.*
@@ -30,6 +27,7 @@ class FilesActivity : AppCompatActivity() {
     lateinit var file: File
     lateinit var filePath: String
     lateinit var photoUri: Uri
+    var i =0
 
     /*private lateinit var test: LifecycleListener*/
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +60,7 @@ class FilesActivity : AppCompatActivity() {
 
     private fun imgShow() {
 
-       openFileInput(file.name).use {
+       FileInputStream(file).use {
            val image = BitmapFactory.decodeStream(it)
            ivSaveImage.setImageBitmap(image)
 
@@ -71,7 +69,7 @@ class FilesActivity : AppCompatActivity() {
     }
 
     private fun imgSave() {
-        openFileOutput(file.name, Context.MODE_PRIVATE).use {
+        FileOutputStream(file,true).use {
 
             val stream = ByteArrayOutputStream()
             image.compress(Bitmap.CompressFormat.PNG, 100, stream)
@@ -85,8 +83,9 @@ class FilesActivity : AppCompatActivity() {
     private fun createFile() {
 
         val path = File(Environment.getExternalStoragePublicDirectory("Gaurav"),albumName).apply {  mkdirs()}
+        i++
 
-        file = File(path,"image1").apply {
+        file = File(path,"image1$i.png").apply {
             createNewFile()
 
         }

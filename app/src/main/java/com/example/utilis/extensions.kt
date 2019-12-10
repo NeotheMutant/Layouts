@@ -49,3 +49,7 @@ fun Int.giveStatus():String{
 
     return "OTHERS"
   }
+
+fun Context.appct():Context{
+    return applicationContext
+}

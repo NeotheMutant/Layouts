@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,8 +34,11 @@ class MainActivity : AppCompatActivity() {
             "Fragments",
             "Saving :- Key Value Pairs",
             "Saving :-Files | LifeCycle Aware concept",
-            "ViewModel"
-        )
+            "ViewModel",
+            "Form Fragment",
+            "User Info | Room DB"
+            ,"Playlist Sharing App"
+               )
 
         viewAdapter = ActivityAdapter(activitylist)
 
@@ -43,7 +47,6 @@ class MainActivity : AppCompatActivity() {
 
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = viewAdapter
-
 
         }
         viewAdapter?.let { ItemTouchHelper(ItemTouchHelperCallBack(it)).attachToRecyclerView(mainRV) }
@@ -62,7 +65,6 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onQueryTextSubmit(query: String?): Boolean {
 
-
                     return false
                 }
 
@@ -77,9 +79,7 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-
             )
-
 
         }
 
@@ -87,6 +87,16 @@ class MainActivity : AppCompatActivity() {
 
 
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+
+        R.id.settings -> {
+            startActivity(Intent(this, SettingsActivity::class.java))
+            true
+        }
+
+        else ->super.onOptionsItemSelected(item)
     }
 
 

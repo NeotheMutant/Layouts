@@ -1,31 +1,20 @@
 package com.example.fragments
 
-import android.content.Context
-import android.content.Intent
-import android.os.Binder
 import android.os.Bundle
 import android.util.Log
-import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.adapters.ActivityAdapter
-import com.example.adapters.ContactAdapter
 import com.example.adapters.GenAdapter
 import com.example.layouts.FragmentsActivity
 import com.example.layouts.R
 import com.example.models.AuthorsAndQuotes
-import com.example.utilis.Connector
 import com.example.utilis.randomColor
-import kotlinx.android.synthetic.main.activity_fragments.*
-import kotlinx.android.synthetic.main.contact_detail_list.*
-import kotlinx.android.synthetic.main.contact_view.*
 import kotlinx.android.synthetic.main.contact_view.view.*
-import kotlinx.android.synthetic.main.titles_activity.*
+import kotlinx.android.synthetic.main.activity_activity.*
 
 class TitlesFragments : Fragment() {
 
@@ -39,7 +28,7 @@ class TitlesFragments : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.titles_activity, container, false)
+        return inflater.inflate(R.layout.activity_activity, container, false)
 
     }
 

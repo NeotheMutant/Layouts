@@ -34,7 +34,8 @@ class FragmentsActivity : AppCompatActivity(), Connector {
 
             val detailFragment = DetailFragment()
 
-            supportFragmentManager.beginTransaction().replace(R.id.flDetails, detailFragment).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.flDetails, detailFragment)
+                .commit()
             Log.d("Fragments Activity", "Sucess")
 
         }
@@ -45,7 +46,8 @@ class FragmentsActivity : AppCompatActivity(), Connector {
 
         if (dualPane) {
 
-        val DetailFragment = supportFragmentManager.findFragmentById(R.id.flDetails) as DetailFragment
+            val DetailFragment =
+                supportFragmentManager.findFragmentById(R.id.flDetails) as DetailFragment
             DetailFragment.DisplayDetail(detail)
 
 
@@ -57,7 +59,6 @@ class FragmentsActivity : AppCompatActivity(), Connector {
             startActivity(intent)
 
         }
-
 
 
     }
