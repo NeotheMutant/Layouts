@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.layouts">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true"
+        />
+   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        android:name="com.example.App"
+        tools:ignore="GoogleAppIndexingWarning"
+        >
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,28 +27,40 @@
             </intent-filter>
         </activity>
         <activity android:name=".MotionActivity" />
-        <activity android:name=".RecyclerActivity" />
+
         <activity android:name=".ImageFilterActivity" />
-        <activity android:name=".ContactListActivity" />
-
-
-        <activity android:name=".ContactDetailActivity" />
         <activity
-            android:name=".ScResultActivity"
-            android:launchMode="singleTop">
+            android:name=".ContactListActivity"
+            android:parentActivityName=".MainActivity" >
+
 
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
 
 
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-
-            </intent-filter>
-
         </activity>
-        <activity android:name="com.example.nestedRv.NestedRv" />
+
+
+        <activity android:name=".ContactDetailActivity"
+            android:theme="@style/Theme.AppCompat.Dialog"
+            />
+
+        <activity android:name=".AnimationsActivity" />
+        <activity android:name=".FragmentsActivity" />
+        <activity android:name=".DetailsActivity" />
+        <activity android:name=".FormActivity" />
+        <activity android:name=".SharedPrefActivity"
+                  android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".FilesActivity" />
+        <activity android:name=".TestViewModel" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".UserInfoActivity" />
+        <activity android:name=".PlayListActivity" />
+        <activity android:name=".SongFormActivity" />
+
     </application>
 
 </manifest>

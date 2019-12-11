@@ -1,21 +1,17 @@
-package com.example.layouts
+package com.example.utilis
 
 import android.content.Context
 import android.graphics.Color
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-fun ViewGroup.infalter(layoutRes: Int): View {
-
-    return View.inflate(context, layoutRes, null)
-}
+import android.view.ViewParent
 
 
-fun Context.inflaterr(layoutRes: Int): View {
 
 
-    return View.inflate(this, layoutRes, null)
-
+fun Context.inflate(layoutRes: Int): View {
+    return View.inflate(this, layoutRes,null)
 }
 
 fun View.randomColor(): Int {
@@ -36,6 +32,13 @@ fun View.randomColor(): Int {
 }
 
 
+fun View.getColor():Int{
+
+
+    return Color.RED
+}
+
+
 fun Int.giveStatus():String{
     if (this == 0)
         return "OTHERS"
@@ -46,3 +49,7 @@ fun Int.giveStatus():String{
 
     return "OTHERS"
   }
+
+fun Context.appct():Context{
+    return applicationContext
+}
