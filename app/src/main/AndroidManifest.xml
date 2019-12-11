@@ -60,6 +60,7 @@
         <activity android:name=".UserInfoActivity" />
         <activity android:name=".PlayListActivity" />
         <activity android:name=".SongFormActivity" />
+        <activity android:name=".SchoolInfoActivity" />
 
     </application>
 
