@@ -17,7 +17,7 @@ interface SongDao{
     @Query("SELECT * FROM song")
     fun getALL(): List<Song>
 
-    @Query("DELETE  FROM song")
+    @Query("DELETE FROM song")
      fun deALL()
 
 }

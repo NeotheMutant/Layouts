@@ -7,7 +7,7 @@ import com.example.layouts.*
 class Utils {
 
     companion object Utility {
-        fun HandleClick(context: Context, position: Int) {
+        fun handleClick(context: Context, position: Int) {
 
             var intent: Intent = Intent()
 
@@ -34,6 +34,14 @@ class Utils {
                 9 -> intent = Intent(context, UserInfoActivity::class.java)
 
                 10 -> intent = Intent(context, PlayListActivity::class.java)
+
+                11 -> intent = Intent(context, ContentProviderActivity::class.java)
+
+                12 -> intent = Intent(context,SchoolDetailActivity::class.java)
+
+                13-> intent = Intent(context,LogInPlayListActivity::class.java)
+
+                14 -> intent = Intent(context,EmailActivity::class.java)
 
             }
 

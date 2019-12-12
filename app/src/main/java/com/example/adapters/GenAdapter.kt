@@ -12,8 +12,8 @@ class GenAdapter<T, V : RecyclerView.ViewHolder>(
     var list: ArrayList<T>,
     private var vh: (View) -> V,
     private var layoutRes: Int,
-    private var vhBinder: (Int, V) -> Unit) : RecyclerView.Adapter<V>() {
-
+    private var vhBinder: (Int, V) -> Unit
+) : RecyclerView.Adapter<V>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): V {
 
@@ -28,20 +28,20 @@ class GenAdapter<T, V : RecyclerView.ViewHolder>(
 
     }
 
-    fun dataUpdate(position: Int,data:T) {
+    fun dataUpdate(position: Int, data: T) {
         list[position] = data
         notifyItemChanged(position)
     }
-    fun dataDelete(position: Int){
+
+    fun dataDelete(position: Int) {
         list.removeAt(position)
         notifyItemRemoved(position)
     }
-    fun dataInsert(data: T){
+
+    fun dataInsert(data: T) {
         list.add(data)
-        Log.d("GenAdapter","${list.size}")
         notifyItemInserted(list.lastIndex)
     }
-
 
 
 }

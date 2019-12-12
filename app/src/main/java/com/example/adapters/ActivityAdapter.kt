@@ -58,7 +58,7 @@ class ActivityAdapter(private var activityList: ArrayList<String>) :
 
             context = holder.itemView.context
 
-            Utils.HandleClick(context, position)
+            Utils.handleClick(context, position)
         }
     }
 
@@ -76,7 +76,7 @@ class ActivityAdapter(private var activityList: ArrayList<String>) :
 
         if (direction == ItemTouchHelper.START) {
             context = viewHolder.itemView.context
-            Utils.HandleClick(context, position)
+            Utils.handleClick(context, position)
             notifyItemChanged(position)
 
         }

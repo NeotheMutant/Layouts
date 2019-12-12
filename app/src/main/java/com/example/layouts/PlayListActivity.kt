@@ -1,19 +1,28 @@
 package com.example.layouts
 
+import android.app.SearchManager
+import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adapters.GenAdapter
 import com.example.entities.Song
 import com.example.models.SongsViewModel
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_playlist.*
 import kotlinx.android.synthetic.main.contact_view.view.*
+import kotlinx.android.synthetic.main.text_view.*
 import kotlinx.android.synthetic.main.view_friends.view.*
 
 class PlayListActivity : AppCompatActivity() {
@@ -26,6 +35,7 @@ class PlayListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_playlist)
+        supportActionBar
 
         /*ViewModel*/
 
@@ -53,10 +63,27 @@ class PlayListActivity : AppCompatActivity() {
                 startActivityForResult(intent, UPDATE_DELETE_REQUEST)
 
             }
-            /* holder.itemView.setOnClickListener {
-                 Toast.makeText(this, "Goes to Song Sites", Toast.LENGTH_SHORT).show()
+            holder.itemView.setOnLongClickListener() {
+                Toast.makeText(this, "Goes to Song Sites", Toast.LENGTH_SHORT).show()
 
-             }*/
+                try {
+
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(list[position].url))
+                    startActivity(intent)
+                }
+                catch (e:ActivityNotFoundException){
+                    val intent = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        putExtra(Intent.EXTRA_TEXT,list[position].url)
+                        data = Uri.parse(list[position].url)
+                        type = "text/*"
+
+                    }
+                    startActivity(intent)
+                }
+
+                true
+            }
 
         }
 
@@ -95,6 +122,26 @@ class PlayListActivity : AppCompatActivity() {
 
 
     }
+
+
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.playlist_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+
+        R.id.signOut -> {
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this,EmailActivity::class.java))
+            true
+        }
+
+        else -> super.onOptionsItemSelected(item)
+    }
+
+
 
     inner class SongListViewHolder(view: View) : RecyclerView.ViewHolder(view)
     inner class FriendsViewHolder(view: View) : RecyclerView.ViewHolder(view)
