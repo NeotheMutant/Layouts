@@ -37,8 +37,12 @@ class MainActivity : AppCompatActivity() {
             "ViewModel",
             "Form Fragment",
             "User Info | Room DB"
-            ,"Playlist Sharing App"
-               )
+            , "Playlist Sharing App | Room DB",
+            "Content Provider",
+            "School App",
+            "FireBase LogIn",
+            "Email Login"
+        )
 
         viewAdapter = ActivityAdapter(activitylist)
 
@@ -84,8 +88,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
-
         return true
     }
 
@@ -96,7 +98,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        else ->super.onOptionsItemSelected(item)
+        else -> super.onOptionsItemSelected(item)
     }
 
 

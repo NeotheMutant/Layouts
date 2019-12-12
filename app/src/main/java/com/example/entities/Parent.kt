@@ -8,6 +8,7 @@ data class Parent(
     @PrimaryKey(autoGenerate = true) var parentId: Int,
     var childId: Int,
     var fatherName: String,
-    var mothersName: String
+    var mothersName: String,
+    var contactNumber:String
 
 )

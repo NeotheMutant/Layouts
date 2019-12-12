@@ -8,6 +8,7 @@
         android:required="true"
         />
    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY"/>
 
     <application
         android:allowBackup="true"
@@ -60,7 +61,25 @@
         <activity android:name=".UserInfoActivity" />
         <activity android:name=".PlayListActivity" />
         <activity android:name=".SongFormActivity" />
+        <activity android:name=".ContentProviderActivity" />
+        <provider
+            android:authorities="com.example.layouts.provider"
+            android:name="com.example.contentProvider.WordContentProvider"
+            />
         <activity android:name=".SchoolInfoActivity" />
+        <activity android:name=".SchoolDetailActivity" />
+        <activity android:name=".LogInPlayListActivity" />
+        <activity android:name=".EmailActivity" >
+            <intent-filter  android:autoVerify="true">
+                <action android:name="android.intent.action.SEND" />
+                <data
+                   android:scheme="http"
+                    android:host="www.example.com"
+                    android:pathPrefix="/signUp"
+                    />
+            </intent-filter>
+
+        </activity>
 
     </application>
 

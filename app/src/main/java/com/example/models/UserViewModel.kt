@@ -32,8 +32,8 @@ class UserViewModel(application: Application) : ViewModel() {
     }
 
     fun updateTv() {
-
         nameLive.value = nameInsert
+
     }
 
 

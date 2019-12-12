@@ -48,7 +48,7 @@ class SongFormActivity : AppCompatActivity() {
                 intent.putExtra(PlayListActivity.SONGURL, etUrl.text.toString())
                 intent.putExtra(PlayListActivity.SONGID, songID)
 
-                setResult(INSERT,intent)
+                setResult(INSERT, intent)
             }
 
             finish()
